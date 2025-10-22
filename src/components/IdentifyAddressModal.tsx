@@ -10,6 +10,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card } from './ui/card';
 import { toast } from 'sonner@2.0.3';
+import { importCointracking } from '../services/cointracking-importer';
 
 // ============================================================================
 // TYPES
@@ -40,7 +41,7 @@ const PLATFORMS: Platform[] = [
     name: 'CoinTracking',
     logo: '📊',
     color: 'bg-blue-500/10 border-blue-500/30 text-blue-400',
-    fileFormats: ['.csv', '.xlsx', '.json']
+    fileFormats: ['.csv', '.xlsx', '.json', '.zip']
   },
   {
     id: 'waltio',
@@ -141,21 +142,25 @@ export default function IdentifyAddressModal({
 
     setUploading(true);
 
-    // Simulate upload and processing
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      if (selectedPlatform === 'cointracking') {
+        const summary = await importCointracking(uploadedFile);
+        toast.success('Backup importado', {
+          description: `${summary.recordCount} registros · ${summary.currencies.length} monedas · ${Object.keys(summary.typesCount).length} tipos`
+        });
+      } else {
+        // Otros proveedores aún no implementados
+        toast.info('Importador no implementado para esta plataforma');
+      }
 
-    const platform = PLATFORMS.find(p => p.id === selectedPlatform);
-    
-    setUploading(false);
-    toast.success(`Dirección identificada exitosamente`, {
-      description: `Datos importados desde ${platform?.name}`
-    });
-
-    if (onIdentified) {
-      onIdentified(selectedPlatform, uploadedFile.name);
+      if (onIdentified) {
+        onIdentified(selectedPlatform, uploadedFile.name);
+      }
+      handleClose();
+    } catch (err: any) {
+      toast.error('Error al importar', { description: String(err?.message || err) });
+      setUploading(false);
     }
-
-    handleClose();
   };
 
   const handleClose = () => {

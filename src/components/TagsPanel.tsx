@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { X, Plus, Edit2, Trash2, Upload, Download, Tag, Check } from 'lucide-react';
+import { toast } from 'sonner@2.0.3';
+import { importCointracking } from '../services/cointracking-importer';
+import { getLatestCointrackingSummary, getRecordsSample } from '../services/reference-queries';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -39,6 +42,15 @@ export default function TagsPanel({ isOpen, onClose }: TagsPanelProps) {
   const [newTagName, setNewTagName] = useState('');
   const [newTagColor, setNewTagColor] = useState('#3b82f6');
   const [newTagCategory, setNewTagCategory] = useState('Wallet');
+  const [lastSummary, setLastSummary] = useState<{
+    fileName: string;
+    recordCount: number;
+    currencies: string[];
+    types: Record<string, number>;
+    suggestions: string[];
+    sessionId: number;
+  } | null>(null);
+  const [sample, setSample] = useState<any[]>([]);
 
   const colors = [
     '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', 
@@ -52,6 +64,40 @@ export default function TagsPanel({ isOpen, onClose }: TagsPanelProps) {
     { name: 'Cold Wallet', match: null, suggestion: 'Ahorro' },
     { name: 'Mining Pool', match: null, suggestion: null },
   ];
+
+  const [uploading, setUploading] = useState(false);
+
+  const handleBackupSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const summary = await importCointracking(file);
+      toast.success('Backup importado', {
+        description: `${summary.recordCount} registros · ${summary.currencies.length} monedas`,
+      });
+
+      // Refresh summary and sample
+      const latest = await getLatestCointrackingSummary();
+      if (latest) {
+        setLastSummary({
+          fileName: latest.fileName,
+          recordCount: latest.recordCount,
+          currencies: latest.currencies,
+          types: latest.typesCount,
+          suggestions: latest.suggestedTags,
+          sessionId: latest.sessionId,
+        });
+        const rows = await getRecordsSample(latest.sessionId, 5);
+        setSample(rows.map(r => r.normalized ?? r.raw));
+      }
+    } catch (err: any) {
+      toast.error('Error al importar', { description: String(err?.message || err) });
+    } finally {
+      setUploading(false);
+      e.target.value = '';
+    }
+  };
 
   const handleAddTag = () => {
     if (newTagName.trim()) {
@@ -206,11 +252,21 @@ export default function TagsPanel({ isOpen, onClose }: TagsPanelProps) {
                       Sube tu archivo de backup para reconciliar etiquetas
                     </p>
                   </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline">
+                <div className="flex gap-2">
+                  <div className="relative">
+                    <input
+                      type="file"
+                      accept=".csv,.xlsx,.json,.zip"
+                      onChange={handleBackupSelect}
+                      className="absolute inset-0 opacity-0 cursor-pointer"
+                      aria-label="Subir Backup CoinTracking"
+                      disabled={uploading}
+                    />
+                    <Button variant="outline" disabled={uploading}>
                       <Upload className="w-4 h-4 mr-2" />
-                      Subir Backup
+                      {uploading ? 'Importando...' : 'Subir Backup'}
                     </Button>
+                  </div>
                     <Button variant="outline">
                       <Download className="w-4 h-4 mr-2" />
                       Exportar
@@ -223,6 +279,64 @@ export default function TagsPanel({ isOpen, onClose }: TagsPanelProps) {
                   <p className="text-neutral-600 mb-1">Arrastra tu archivo aquí</p>
                   <p className="text-neutral-400">o haz clic para seleccionar</p>
                 </div>
+
+                {lastSummary && (
+                  <div className="mt-6 text-left">
+                    <div className="text-sm text-neutral-500 mb-2">Último import</div>
+                    <div className="p-4 rounded-lg border bg-neutral-50">
+                      <div className="text-neutral-900 font-medium">{lastSummary.fileName}</div>
+                      <div className="text-neutral-600 text-sm mt-1">
+                        {lastSummary.recordCount} registros · {lastSummary.currencies.length} monedas
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                        <div>
+                          <div className="text-neutral-700 text-sm mb-1">Tipos</div>
+                          <div className="flex flex-wrap gap-2">
+                            {Object.entries(lastSummary.types).slice(0,6).map(([k,v]) => (
+                              <span key={k} className="px-2 py-1 rounded bg-white border text-xs">{k}: {v}</span>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-neutral-700 text-sm mb-1">Sugerencias de etiquetas</div>
+                          <div className="flex flex-wrap gap-2">
+                            {lastSummary.suggestions.slice(0,8).map((s) => (
+                              <span key={s} className="px-2 py-1 rounded bg-white border text-xs">{s}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {sample.length > 0 && (
+                        <div className="mt-4">
+                          <div className="text-neutral-700 text-sm mb-1">Muestra (5)</div>
+                          <div className="overflow-x-auto">
+                            <table className="w-full text-xs">
+                              <thead>
+                                <tr className="text-left text-neutral-500">
+                                  <th className="p-2">Fecha</th>
+                                  <th className="p-2">Tipo</th>
+                                  <th className="p-2">Moneda</th>
+                                  <th className="p-2">Comentario</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {sample.map((r, idx) => (
+                                  <tr key={idx} className="border-t">
+                                    <td className="p-2">{r.date?.slice(0,10) || '-'}</td>
+                                    <td className="p-2">{r.type || '-'}</td>
+                                    <td className="p-2">{r.currency || r.buyCurrency || r.sellCurrency || '-'}</td>
+                                    <td className="p-2 truncate max-w-[280px]">{r.comment || '-'}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
 
