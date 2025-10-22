@@ -108,6 +108,10 @@ export interface Transaction {
   fromWallet?: string;
   toWallet?: string;
   network?: NetworkType;
+
+  // On-chain addresses
+  fromAddress?: string;
+  toAddress?: string;
   
   // Organization
   tradeGroup?: string;
@@ -117,6 +121,11 @@ export interface Transaction {
   // Blockchain data
   txHash?: string;
   confirmations?: number;
+  blockNumber?: number;
+  gasUsed?: number;
+  gasPriceGwei?: number;
+  nonce?: number;
+  txIndex?: number;
   
   // Fiscal data
   isTaxable?: boolean;
