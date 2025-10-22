@@ -1,184 +1,94 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import { Toaster } from 'sonner';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { ThemeProvider } from './contexts/ThemeContext';
-import ErrorBoundary from './components/shared/ErrorBoundary';
-import LoadingState from './components/shared/LoadingState';
-import TopNavBar from './components/TopNavBar';
-import Sidebar from './components/Sidebar';
-import BottomNav from './components/BottomNav';
-import ContextualAIChat from './components/ContextualAIChat';
-import LandingPage from './components/LandingPage';
-import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
+import { useState } from 'react'
+import AddressImporter from './components/AddressImporter'
+import DebugConsole from './components/DebugConsole'
+import './App.css'
 
-// Force dark mode
-if (typeof document !== 'undefined') {
-  document.documentElement.classList.add('dark');
-}
+// Hook para gestionar los logs de debug
+export const useDebugLogs = () => {
+  const [logs, setLogs] = useState<Array<{
+    id: string;
+    timestamp: string;
+    type: 'info' | 'success' | 'error' | 'warning';
+    message: string;
+    data?: any;
+  }>>([]);
 
-// Lazy load sections
-const DashboardSection = lazy(() => import('./components/DashboardSection'));
-const TaxFiscalSection = lazy(() => import('./components/TaxFiscalSection'));
-const AssetsSection = lazy(() => import('./components/AssetsSection'));
-const TransactionsSection = lazy(() => import('./components/TransactionsSection'));
-const BanksSection = lazy(() => import('./components/BanksSection'));
-const AMLKYTSection = lazy(() => import('./components/AMLKYTSection'));
-const DocsApp = lazy(() => import('./DocsApp'));
-
-function AppContent() {
-  const { isAuthenticated, isLoading: authLoading, login, register, logout } = useAuth();
-  const [currentPage, setCurrentPage] = useState<'landing' | 'login' | 'register' | 'app' | 'docs'>('landing');
-  const [currentView, setCurrentView] = useState('dashboard');
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-
-  // Auto-collapse sidebar on smaller screens
-  useEffect(() => {
-    const handleResize = () => {
-      setSidebarCollapsed(window.innerWidth < 1280);
+  const addLog = (type: 'info' | 'success' | 'error' | 'warning', message: string, data?: any) => {
+    const newLog = {
+      id: `${Date.now()}-${Math.random()}`,
+      timestamp: new Date().toLocaleTimeString('es-ES'),
+      type,
+      message,
+      data
     };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Update page state based on authentication
-  useEffect(() => {
-    if (isAuthenticated) {
-      setCurrentPage('app');
-    } else if (!authLoading) {
-      setCurrentPage('landing');
-    }
-  }, [isAuthenticated, authLoading]);
-
-  const handleLogin = async (email: string, password: string) => {
-    await login(email, password);
+    setLogs(prev => [newLog, ...prev].slice(0, 100)); // Keep last 100 logs
   };
 
-  const handleRegister = async (name: string, email: string, password: string) => {
-    await register(name, email, password);
+  const clearLogs = () => setLogs([]);
+
+  return { logs, addLog, clearLogs };
+};
+
+function App() {
+  const { logs, addLog, clearLogs } = useDebugLogs();
+  const [addresses, setAddresses] = useState<string[]>([]);
+
+  const handleAddressesImported = (importedAddresses: string[]) => {
+    setAddresses(importedAddresses);
+    addLog('success', `${importedAddresses.length} direcciones importadas`, { addresses: importedAddresses });
   };
-
-  const handleLogout = () => {
-    logout();
-    setCurrentPage('landing');
-  };
-
-  const renderView = () => {
-    switch (currentView) {
-      case 'dashboard': return <DashboardSection />;
-      case 'fiscal': return <TaxFiscalSection />;
-      case 'assets': return <AssetsSection />;
-      case 'transactions': return <TransactionsSection />;
-      case 'banks': return <BanksSection />;
-      case 'aml': return <AMLKYTSection />;
-      case 'docs': return <DocsApp onBackToHome={() => setCurrentPage('landing')} />;
-      default: return <DashboardSection />;
-    }
-  };
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <LoadingState message="Cargando Kontrol..." size="lg" />
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    if (currentPage === 'login') {
-      return (
-        <LoginPage
-          onLogin={handleLogin}
-          onNavigateToRegister={() => setCurrentPage('register')}
-          onNavigateToHome={() => setCurrentPage('landing')}
-        />
-      );
-    }
-    
-    if (currentPage === 'register') {
-      return (
-        <RegisterPage
-          onRegister={handleRegister}
-          onNavigateToLogin={() => setCurrentPage('login')}
-          onNavigateToHome={() => setCurrentPage('landing')}
-        />
-      );
-    }
-
-    if (currentPage === 'docs') {
-      return (
-        <ErrorBoundary>
-          <Suspense fallback={<LoadingState message="Cargando documentación..." />}>
-            <DocsApp onBackToHome={() => setCurrentPage('landing')} />
-          </Suspense>
-        </ErrorBoundary>
-      );
-    }
-    
-    return (
-      <LandingPage
-        onLogin={() => setCurrentPage('login')}
-        onRegister={() => setCurrentPage('register')}
-        onNavigateToDocs={() => setCurrentPage('docs')}
-      />
-    );
-  }
-
-  // Full-screen docs view
-  if (currentView === 'docs') {
-    return (
-      <div className="min-h-screen bg-background">
-        <ErrorBoundary>
-          <Suspense fallback={<LoadingState message="Cargando documentación..." />}>
-            {renderView()}
-          </Suspense>
-        </ErrorBoundary>
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-screen bg-background">
-      <TopNavBar 
-        onLogout={handleLogout} 
-        onNavigateToDocs={() => setCurrentView('docs')} 
-      />
-      
-      <Sidebar 
-        currentView={currentView} 
-        onViewChange={setCurrentView}
-        isCollapsed={sidebarCollapsed}
-        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
-      />
-
-      <BottomNav currentView={currentView} onViewChange={setCurrentView} />
-
-      <main className={`pt-16 pb-20 lg:pb-6 min-h-screen transition-all duration-300 ${sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64'}`}>
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-4 sm:py-6 lg:py-8 xl:py-12">
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingState message="Cargando sección..." />}>
-              {renderView()}
-            </Suspense>
-          </ErrorBoundary>
+    <div className="app">
+      {/* Header */}
+      <header className="header">
+        <div className="header-content">
+          <h1>🎯 KONTROL</h1>
+          <p className="subtitle">Plataforma de Gestión Crypto-Fiscal MVP</p>
         </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="main-content">
+        {/* Sección de Importación */}
+        <section className="section">
+          <h2>📥 Importar Direcciones</h2>
+          <AddressImporter 
+            onImport={handleAddressesImported}
+            onLog={addLog}
+          />
+          
+          {/* Mostrar direcciones importadas */}
+          {addresses.length > 0 && (
+            <div className="addresses-list">
+              <h3>Direcciones Importadas ({addresses.length})</h3>
+              <div className="addresses-grid">
+                {addresses.map((address, idx) => (
+                  <div key={idx} className="address-card">
+                    <span className="address-label">#{idx + 1}</span>
+                    <code className="address-value">{address}</code>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* Consola de Debug */}
+        <section className="section console-section">
+          <DebugConsole 
+            logs={logs}
+            onClear={clearLogs}
+          />
+        </section>
       </main>
 
-      <ContextualAIChat section={currentView} />
+      {/* Footer */}
+      <footer className="footer">
+        <p>Desarrollado con ❤️ para la comunidad crypto | MVP v0.1.0</p>
+      </footer>
     </div>
-  );
+  )
 }
 
-export default function App() {
-  return (
-    <ErrorBoundary>
-      <ThemeProvider>
-        <AuthProvider>
-          <AppContent />
-          <Toaster position="top-right" expand={false} richColors closeButton />
-        </AuthProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
-}
+export default App
