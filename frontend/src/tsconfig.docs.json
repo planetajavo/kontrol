@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist-docs"
+  },
+  "include": [
+    "DocsApp.tsx",
+    "main-docs.tsx",
+    "components/**/*",
+    "styles/**/*",
+    "types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dist-docs"
+  ]
+}

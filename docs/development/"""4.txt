@@ -1,0 +1,9 @@
+    with open(self.base_dir / "03-frontend" / "01-design-system-completo.md", "w", encoding="utf-8") as f:
+        f.write(design_system)
+    
+    print("✅ Especificaciones frontend generadas")
+
+def generate_development_plan(self):
+    """Generar plan de desarrollo completo de 90 días"""
+    
+    plan_content = """# 🛠️ KONTROL - PLAN DE DESARROLLO 90 DÍAS DETALLADO

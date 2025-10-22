@@ -1,0 +1,19 @@
+PostgreSQL 15:
+  • Rol: Datos usuario, metadata, compliance
+  • Características: ACID, RLS, JSONB
+  • Extensions: pgcrypto, uuid-ossp, timescaledb
+
+ClickHouse 23.3:
+  • Rol: Analytics, tax engine, queries agregadas
+  • Características: Column-oriented, alta compresión
+  • Optimización: Particionado temporal, índices skip
+
+Neo4j 5.8:
+  • Rol: Forensic analytics, graph queries
+  • Características: Trazabilidad fondos, detección patrones
+  • Algoritmos: PageRank, Community Detection
+
+Redis 7.0:
+  • Rol: Cache, sessions, vector store, pub/sub
+  • Características: Baja latencia, persistencia
+  • Módulos: RedisJSON, RediSearch

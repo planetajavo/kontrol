@@ -1,0 +1,23 @@
+service: ingestion-service
+language: go
+port: 8081
+replicas: 2-5
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+endpoints:
+  - POST /api/v1/sync/exchange: Sincronización exchange
+  - POST /api/v1/sync/wallet: Sincronización wallet
+  - GET /api/v1/sync/status: Estado sincronización
+  - POST /api/v1/upload/csv: Upload CSV histórico
+exchange_support:
+  - binance: API + WebSocket
+  - coinbase: API REST
+  - kraken: API REST
+  - ftx: API REST (legacy)
+blockchain_support:
+  - ethereum: JSON-RPC
+  - bitcoin: JSON-RPC
+  - polygon: JSON-RPC
+  - arbitrum: JSON-RPC

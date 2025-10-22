@@ -1,0 +1,5 @@
+    with open(self.base_dir / "02-arquitectura" / "01-arquitectura-microservicios.md", "w", encoding="utf-8") as f:
+        f.write(microservices_content)
+    
+    # Bases de datos
+    db_content = """# 🗃️ ARQUITECTURA DE BASES DE DATOS

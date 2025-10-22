@@ -1,0 +1,34 @@
+# GitHub Actions Workflow
+name: Deploy to Production
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: make test-all
+        
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SAST scan
+        uses: github/codeql-action/analyze@v2
+        
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to production
+        run: make deploy-prod
+
+# Entregables
+• .github/workflows/ci.yml
+• .github/workflows/cd.yml
+• .github/workflows/security.yml
+• scripts/security/scan.sh
+• Dockerfiles para todos los servicios

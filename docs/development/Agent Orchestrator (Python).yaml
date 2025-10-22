@@ -1,0 +1,20 @@
+service: agent-orchestrator
+language: python
+port: 8082
+replicas: 2-4
+resources:
+  requests:
+    memory: "1Gi"
+    cpu: "500m"
+agents:
+  - tax-optimizer: Análisis fiscal proactivo
+  - legal-agent: Generación proof-of-origin
+  - security-agent: Detección riesgo on-chain
+  - portfolio-chat: Asistente conversacional
+llm_integration:
+  - openai-gpt4: Análisis complejo
+  - claude-3: Razonamiento avanzado
+  - local-llm: Datos sensibles (opcional)
+vector_stores:
+  - chroma: Documentación legal
+  - redis: Embeddings transacciones

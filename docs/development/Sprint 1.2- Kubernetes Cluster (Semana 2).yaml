@@ -1,0 +1,24 @@
+# Objetivos
+✅ GKE cluster con auto-scaling
+✅ ArgoCD para GitOps deployments
+✅ Monitoring stack (Prometheus/Grafana)
+✅ Logging (Loki/Promtail)
+
+# Especificaciones Técnicas
+cluster_name: kontrol-prod
+location: europe-west1
+node_pools:
+  - name: general
+    machine_type: e2-medium
+    min_nodes: 3
+    max_nodes: 10
+  - name: memory-optimized
+    machine_type: e2-highmem-2
+    min_nodes: 2
+    max_nodes: 6
+
+# Entregables
+• k8s/cluster-config.yaml
+• k8s/argocd/applications/
+• k8s/monitoring/prometheus-values.yaml
+• k8s/logging/loki-config.yaml

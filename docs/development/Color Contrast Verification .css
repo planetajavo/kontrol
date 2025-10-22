@@ -1,0 +1,21 @@
+/* Contrast ratios mínimos */
+.text-primary {
+  color: var(--gray-900); /* 1:21 ratio con white */
+}
+
+.text-secondary {
+  color: var(--gray-600); /* 1:7.4 ratio con white */
+}
+
+.bg-success {
+  background-color: var(--success-500); /* 1:4.6 ratio con white */
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-500: #1e40af;
+    --success-500: #047857;
+    --error-500: #dc2626;
+  }
+}

@@ -1,0 +1,21 @@
+service: matching-engine
+language: rust
+port: 8080
+replicas: 3-10 (auto-scaling)
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "500m"
+  limits:
+    memory: "2Gi" 
+    cpu: "2000m"
+endpoints:
+  - POST /api/v1/reconcile: Conciliación batch
+  - GET /api/v1/health: Health check
+  - GET /api/v1/metrics: Prometheus metrics
+dependencies:
+  - redis (cache)
+  - clickhouse (analytics)
+environment:
+  - REDIS_URL: redis://redis:6379
+  - CLICKHOUSE_URL: http://clickhouse:8123

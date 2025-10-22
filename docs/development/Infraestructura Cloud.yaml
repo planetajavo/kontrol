@@ -1,0 +1,20 @@
+Primary Cloud: Google Cloud Platform (GCP)
+  • GKE: Kubernetes orchestration
+  • Cloud SQL: PostgreSQL managed
+  • Memorystore: Redis managed
+  • Cloud Storage: File storage
+
+Secondary Cloud: AWS (backup)
+  • EKS: Kubernetes backup
+  • RDS: PostgreSQL replica
+  • ElastiCache: Redis backup
+
+Orquestación:
+  • Kubernetes 1.27+: Container orchestration
+  • ArgoCD: GitOps continuous delivery
+  • Prometheus + Grafana: Monitoring
+  • Loki + Promtail: Log aggregation
+
+Infrastructure as Code:
+  • Terraform 1.5+: Provisioning cloud resources
+  • Helm 3.10+: Kubernetes package management

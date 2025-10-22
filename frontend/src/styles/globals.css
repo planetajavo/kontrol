@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@700;900&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================================
+   KONTROL - Dark Mode Only with Purple Theme
+   ============================================================================ */
+
+:root {
+  --font-size: 16px;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  
+  /* Colors - Purple Theme Dark Mode */
+  --background: #0A0A0A;
+  --foreground: #FAFAFA;
+  --card: #171717;
+  --card-foreground: #FAFAFA;
+  --popover: #171717;
+  --popover-foreground: #FAFAFA;
+  
+  /* Primary - Purple */
+  --primary: #8B5CF6;
+  --primary-foreground: #FFFFFF;
+  --primary-gradient-from: #A78BFA;
+  --primary-gradient-to: #7C3AED;
+  
+  /* Secondary & Accent */
+  --secondary: #1F1F1F;
+  --secondary-foreground: #FAFAFA;
+  --muted: #262626;
+  --muted-foreground: #A1A1A1;
+  --accent: #252525;
+  --accent-foreground: #FAFAFA;
+  
+  /* Semantic Colors - Pastel Modern Palette */
+  /* Success - Mint/Emerald Pastel */
+  --success-light: #6EE7B7;
+  --success-pastel: #34D399;
+  --success: #10B981;
+  --success-dark: #059669;
+  --success-foreground: #FFFFFF;
+  
+  /* Warning - Amber Soft Pastel */
+  --warning-light: #FCD34D;
+  --warning-pastel: #FBBF24;
+  --warning: #F59E0B;
+  --warning-dark: #D97706;
+  --warning-foreground: #18181B;
+  
+  /* Destructive - Coral Pastel */
+  --destructive-light: #FCA5A5;
+  --destructive-pastel: #F87171;
+  --destructive: #EF4444;
+  --destructive-dark: #DC2626;
+  --destructive-foreground: #FAFAFA;
+  
+  /* Info - Sky Blue Pastel */
+  --info-light: #93C5FD;
+  --info-pastel: #60A5FA;
+  --info: #3B82F6;
+  --info-dark: #2563EB;
+  --info-foreground: #FFFFFF;
+  
+  /* Purple - Violet Pastel (for transactions) */
+  --purple-light: #DDD6FE;
+  --purple-pastel: #C4B5FD;
+  --purple: #A78BFA;
+  --purple-dark: #8B5CF6;
+  --purple-foreground: #FFFFFF;
+  
+  /* Pink - Rose Pastel (for transactions) */
+  --pink-light: #FBCFE8;
+  --pink-pastel: #F9A8D4;
+  --pink: #EC4899;
+  --pink-dark: #DB2777;
+  --pink-foreground: #FFFFFF;
+  
+  /* Teal - Cyan-Green Pastel (for transactions) */
+  --teal-light: #99F6E4;
+  --teal-pastel: #5EEAD4;
+  --teal: #14B8A6;
+  --teal-dark: #0D9488;
+  --teal-foreground: #FFFFFF;
+  
+  /* Cyan - Light Blue Pastel (for transactions) */
+  --cyan-light: #A5F3FC;
+  --cyan-pastel: #67E8F9;
+  --cyan: #06B6D4;
+  --cyan-dark: #0891B2;
+  --cyan-foreground: #FFFFFF;
+  
+  /* Indigo - Deep Blue Pastel (for transactions) */
+  --indigo-light: #C7D2FE;
+  --indigo-pastel: #A5B4FC;
+  --indigo: #6366F1;
+  --indigo-dark: #4F46E5;
+  --indigo-foreground: #FFFFFF;
+  
+  /* UI Elements */
+  --border: #27272A;
+  --input: #27272A;
+  --input-background: #171717;
+  --switch-background: #3F3F46;
+  --ring: #8B5CF6;
+  
+  /* Charts - Purple variations */
+  --chart-1: #8B5CF6;
+  --chart-2: #A78BFA;
+  --chart-3: #C4B5FD;
+  --chart-4: #DDD6FE;
+  --chart-5: #7C3AED;
+  
+  /* Sidebar */
+  --sidebar: #171717;
+  --sidebar-foreground: #FAFAFA;
+  --sidebar-primary: #8B5CF6;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #FAFAFA;
+  --sidebar-border: #27272A;
+  --sidebar-ring: #8B5CF6;
+  
+  /* Border Radius */
+  --radius: 0.75rem;
+  
+  /* Animation Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  
+  /* Easing Functions */
+  --ease-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Shadows with Purple Glow */
+  --shadow-purple-sm: 0 0 20px rgba(139, 92, 246, 0.1);
+  --shadow-purple-md: 0 0 40px rgba(139, 92, 246, 0.15);
+  --shadow-purple-lg: 0 0 60px rgba(139, 92, 246, 0.25);
+  
+  /* Blur Levels */
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 16px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-gradient-from: var(--primary-gradient-from);
+  --color-primary-gradient-to: var(--primary-gradient-to);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success-light: var(--success-light);
+  --color-success-pastel: var(--success-pastel);
+  --color-success: var(--success);
+  --color-success-dark: var(--success-dark);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning-light: var(--warning-light);
+  --color-warning-pastel: var(--warning-pastel);
+  --color-warning: var(--warning);
+  --color-warning-dark: var(--warning-dark);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive-light: var(--destructive-light);
+  --color-destructive-pastel: var(--destructive-pastel);
+  --color-destructive: var(--destructive);
+  --color-destructive-dark: var(--destructive-dark);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info-light: var(--info-light);
+  --color-info-pastel: var(--info-pastel);
+  --color-info: var(--info);
+  --color-info-dark: var(--info-dark);
+  --color-info-foreground: var(--info-foreground);
+  --color-purple-light: var(--purple-light);
+  --color-purple-pastel: var(--purple-pastel);
+  --color-purple: var(--purple);
+  --color-purple-dark: var(--purple-dark);
+  --color-purple-foreground: var(--purple-foreground);
+  --color-pink-light: var(--pink-light);
+  --color-pink-pastel: var(--pink-pastel);
+  --color-pink: var(--pink);
+  --color-pink-dark: var(--pink-dark);
+  --color-pink-foreground: var(--pink-foreground);
+  --color-teal-light: var(--teal-light);
+  --color-teal-pastel: var(--teal-pastel);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+  --color-teal-foreground: var(--teal-foreground);
+  --color-cyan-light: var(--cyan-light);
+  --color-cyan-pastel: var(--cyan-pastel);
+  --color-cyan: var(--cyan);
+  --color-cyan-dark: var(--cyan-dark);
+  --color-cyan-foreground: var(--cyan-foreground);
+  --color-indigo-light: var(--indigo-light);
+  --color-indigo-pastel: var(--indigo-pastel);
+  --color-indigo: var(--indigo);
+  --color-indigo-dark: var(--indigo-dark);
+  --color-indigo-foreground: var(--indigo-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/**
+ * Base typography
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* ============================================================================
+   CUSTOM ANIMATIONS & UTILITIES
+   ============================================================================ */
+
+@layer utilities {
+  /* Glow Effects */
+  .glow-purple-sm {
+    box-shadow: var(--shadow-purple-sm);
+  }
+  
+  .glow-purple-md {
+    box-shadow: var(--shadow-purple-md);
+  }
+  
+  .glow-purple-lg {
+    box-shadow: var(--shadow-purple-lg);
+  }
+  
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition-timing-function: var(--ease-smooth);
+  }
+  
+  .transition-spring {
+    transition-timing-function: var(--ease-spring);
+  }
+  
+  /* Gradient Borders */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(var(--card), var(--card)) padding-box,
+                linear-gradient(135deg, var(--primary-gradient-from), var(--primary-gradient-to)) border-box;
+    border: 2px solid transparent;
+  }
+  
+  /* Animated Gradient Background */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  /* Shimmer Effect for Skeletons */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(
+      to right,
+      var(--muted) 0%,
+      var(--accent) 20%,
+      var(--muted) 40%,
+      var(--muted) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s linear infinite;
+  }
+  
+  /* Pulse Glow */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Custom Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-border {
+    scrollbar-color: var(--border) transparent;
+  }
+  
+  .scrollbar-track-transparent {
+    scrollbar-color: var(--border) transparent;
+  }
+  
+  /* Webkit Scrollbar for Chrome/Safari */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thumb-border::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 9999px;
+  }
+  
+  .scrollbar-thumb-border::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted);
+  }
+  
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}

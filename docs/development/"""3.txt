@@ -1,0 +1,9 @@
+    with open(self.base_dir / "02-arquitectura" / "02-bases-datos-detalladas.md", "w", encoding="utf-8") as f:
+        f.write(db_content)
+    
+    print("✅ Arquitectura técnica generada")
+
+def generate_frontend_specifications(self):
+    """Generar especificaciones frontend completas para Figma"""
+    
+    design_system = """# 🎨 KONTROL - DESIGN SYSTEM COMPLETO

@@ -1,0 +1,42 @@
+┌─────────────────────────────────────────────────────────────────┐
+│                            HEADER                               │
+├─────────────────┬─────────────────────────────┬─────────────────┤
+│   Dashboard →   │    Portfolio Manager        │   View Toggle   │
+│   Portfolio     │                             │  Cards | Table  │
+└─────────────────┴─────────────────────────────┴─────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                         FILTER BAR                              │
+├───────┬───────┬───────┬───────┬───────┬───────┬─────────────────┤
+│ Date  │ Asset │ Source│ Status│ Search│  Sort │    Bulk Actions │
+│ Range │ Type  │ Type  │       │       │       │                 │
+├───────┴───────┴───────┴───────┴───────┴───────┴─────────────────┤
+
+┌─────────────────────────────────────────────────────────────────┐
+│                          CONTENT AREA                           │
+├─────────────────────────────────────────────────────────────────┤
+│                      WALLET CARDS GRID                          │
+├───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┤
+│ 🏦 ETH Wallet           🏦 BTC Cold Storage     🏦 USDC DeFi    │
+│ 0x742d..35a1            bc1q..k9lf            0x8f3..d6a       │
+│ Balance: 12.5 ETH       Balance: 1.2 BTC      Balance: 45,000  │
+│ Value: $23,450          Value: $28,900        Value: $45,000   │
+│ 24h: +2.3%              24h: -1.2%            24h: +0.1%       │
+│ ⋮ Sync ⋮ Details        ⋮ Sync ⋮ Details      ⋮ Sync ⋮ Details │
+├───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┤
+│                     EXCHANGE CONNECTIONS                        │
+├───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┤
+│ 🏢 Binance              🏢 Coinbase             🏢 Kraken       │
+│ Connected ✅            Connected ✅            Connected ✅     │
+│ Last sync: 2 min ago   Last sync: 5 min ago   Last sync: 1h ago│
+│ Balance: $12,345       Balance: $8,901        Balance: $2,468  │
+│ 🔄 Sync Now             🔄 Sync Now             🔄 Sync Now     │
+├───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┤
+│                        DeFi POSITIONS                          │
+├───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┤
+│ 🦄 Uniswap V3           🐂 Aave V3              🦙 Compound     │
+│ ETH/USDC LP            ETH Collateral         USDC Lending     │
+│ TVL: $8,900            Deposited: 2.1 ETH     Supplied: 5,000 │
+│ APR: 12.5%             APY: 3.2%              APY: 4.8%       │
+│ 📊 Manage              📊 Manage               📊 Manage       │
+└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┘

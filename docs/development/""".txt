@@ -1,0 +1,9 @@
+    with open(self.base_dir / "01-proyecto" / "00-plan-maestro-completo.md", "w", encoding="utf-8") as f:
+        f.write(content)
+    print("✅ Documento principal generado")
+
+def generate_technical_architecture(self):
+    """Generar arquitectura técnica detallada"""
+    
+    # Arquitectura Microservicios
+    microservices_content = """# ⚙️ ARQUITECTURA DE MICROSERVICIOS

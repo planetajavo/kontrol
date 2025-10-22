@@ -1,0 +1,114 @@
+openapi: 3.0.0
+info:
+  title: KONTROL API
+  version: 1.0.0
+  description: API completa para KONTROL - Smart Crypto Wealth OS
+
+servers:
+  - url: https://api.kontrol.com/v1
+    description: Production server
+  - url: https://staging-api.kontrol.com/v1  
+    description: Staging server
+
+paths:
+  /auth/register:
+    post:
+      summary: Registro de nuevo usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, full_name, jurisdiction]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 8
+                full_name:
+                  type: string
+                jurisdiction:
+                  type: string
+                  enum: [es, us, uk, de, fr]
+      responses:
+        '201':
+          description: Usuario creado exitosamente
+        '400':
+          description: Datos de entrada inválidos
+
+  /sync/exchange:
+    post:
+      summary: Sincronizar datos de exchange
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [exchange, api_key, api_secret]
+              properties:
+                exchange:
+                  type: string
+                  enum: [binance, coinbase, kraken]
+                api_key:
+                  type: string
+                api_secret:
+                  type: string
+      responses:
+        '202':
+          description: Sincronización iniciada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "ACCEPTED"
+        '401':
+          description: No autorizado
+
+  /portfolio/overview:
+    get:
+      summary: Obtener resumen del portfolio
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Resumen del portfolio
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_value:
+                    type: number
+                  total_cost_basis:
+                    type: number
+                  unrealized_pnl:
+                    type: number
+                  realized_pnl:
+                    type: number
+                  allocation:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        asset:
+                          type: string
+                        percentage:
+                          type: number
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
