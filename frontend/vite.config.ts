@@ -6,12 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   css: {
-    postcss: {
-      plugins: [
-        require('tailwindcss'),
-        require('autoprefixer'),
-      ],
-    },
+    postcss: './postcss.config.js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
