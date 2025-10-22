@@ -54,7 +54,6 @@
             "zod": "^4.1.12"
       },
       "devDependencies": {
-            "@tailwindcss/postcss": "^4.1.15",
             "@types/node": "^20.10.0",
             "@vitejs/plugin-react-swc": "^3.10.2",
             "autoprefixer": "^10.4.21",
