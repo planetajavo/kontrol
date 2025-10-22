@@ -112,6 +112,17 @@ export interface Transaction {
   // On-chain addresses
   fromAddress?: string;
   toAddress?: string;
+  // Classification (orthogonal a type)
+  classification?:
+    | 'staking_reward'
+    | 'airdrop'
+    | 'mining'
+    | 'gift'
+    | 'income_other'
+    | 'expense_fee'
+    | 'trade'
+    | 'transfer'
+    | 'other';
   
   // Organization
   tradeGroup?: string;
@@ -126,6 +137,9 @@ export interface Transaction {
   gasPriceGwei?: number;
   nonce?: number;
   txIndex?: number;
+  
+  // Extensible metadata para campos específicos de chain
+  extra?: Record<string, string | number | boolean>;
   
   // Fiscal data
   isTaxable?: boolean;

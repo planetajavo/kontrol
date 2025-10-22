@@ -84,6 +84,7 @@ export function generateMockTransactions(count: number = 500): Transaction[] {
         transaction.feeCurrency = 'EUR';
         transaction.feeInEur = transaction.feeAmount;
         transaction.isTaxable = false;
+        transaction.classification = 'trade';
         transaction.tradeGroup = tradeGroups[Math.floor(Math.random() * tradeGroups.length)];
         if (Math.random() > 0.7) {
           transaction.comment = `DCA ${currency} - Compra mensual`;
@@ -99,6 +100,7 @@ export function generateMockTransactions(count: number = 500): Transaction[] {
         transaction.isTaxable = true;
         transaction.costBasis = valueInEur * (0.7 + Math.random() * 0.5); // Random cost basis
         transaction.realizedPnL = valueInEur - transaction.costBasis;
+        transaction.classification = 'trade';
         transaction.tradeGroup = tradeGroups[Math.floor(Math.random() * tradeGroups.length)];
         if (Math.random() > 0.8) {
           transaction.comment = `Venta parcial - Toma de beneficios`;
@@ -112,6 +114,10 @@ export function generateMockTransactions(count: number = 500): Transaction[] {
         transaction.feeCurrency = currency;
         transaction.feeInEur = transaction.feeAmount! * priceInEur;
         transaction.isTaxable = false;
+        transaction.classification = 'transfer';
+        // Add from/to addresses (mocked)
+        transaction.fromAddress = generateRandomAddress(transaction.network || 'ethereum');
+        transaction.toAddress = generateRandomAddress(transaction.network || 'ethereum');
         if (Math.random() > 0.6) {
           transaction.comment = `Transferencia a cold storage`;
         }
@@ -134,6 +140,7 @@ export function generateMockTransactions(count: number = 500): Transaction[] {
         transaction.isTaxable = true;
         transaction.costBasis = amount * priceInEur;
         transaction.realizedPnL = (toAmount * toPriceInEur) - transaction.costBasis;
+        transaction.classification = 'trade';
         transaction.tradeGroup = tradeGroups[Math.floor(Math.random() * tradeGroups.length)];
         if (Math.random() > 0.7) {
           transaction.comment = `Swap optimizado - Rebalanceo de portfolio`;
@@ -145,6 +152,11 @@ export function generateMockTransactions(count: number = 500): Transaction[] {
     if (status === 'confirmed') {
       transaction.txHash = generateTxHash();
       transaction.confirmations = 6 + Math.floor(Math.random() * 100);
+      transaction.blockNumber = 2000000 + Math.floor(Math.random() * 5000000);
+      transaction.gasUsed = 21000 + Math.floor(Math.random() * 150000);
+      transaction.gasPriceGwei = parseFloat((5 + Math.random() * 60).toFixed(2));
+      transaction.nonce = Math.floor(Math.random() * 200);
+      transaction.txIndex = Math.floor(Math.random() * 200);
     }
 
     // Add tags randomly
@@ -204,6 +216,23 @@ function generateTxHash(): string {
     hash += chars[Math.floor(Math.random() * chars.length)];
   }
   return hash;
+}
+
+// ----------------------------------------------------------------------------
+// Random address generator (very rough, for mocks only)
+function generateRandomAddress(network: typeof networks[number] | string): string {
+  if (network === 'bitcoin') {
+    const chars = '023456789acdefghjklmnpqrstuvwxyz';
+    let addr = 'bc1q';
+    for (let i = 0; i < 36; i++) addr += chars[Math.floor(Math.random() * chars.length)];
+    return addr;
+  }
+
+  // EVM-like
+  const hex = '0123456789abcdef';
+  let addr = '0x';
+  for (let i = 0; i < 40; i++) addr += hex[Math.floor(Math.random() * hex.length)];
+  return addr;
 }
 
 /**

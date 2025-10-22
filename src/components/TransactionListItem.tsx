@@ -280,6 +280,40 @@ export default function TransactionListItem({
               </div>
             )}
 
+            {/* From/To Addresses (if present) */}
+            {!compact && (transaction.fromAddress || transaction.toAddress) && (
+              <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+                {transaction.fromAddress && (
+                  <div className="flex items-center gap-1">
+                    <span className="text-foreground/70">From:</span>
+                    <code className="bg-muted/40 px-1.5 py-0.5 rounded font-mono">
+                      {transaction.fromAddress.length > 20 ? `${transaction.fromAddress.slice(0, 10)}...${transaction.fromAddress.slice(-8)}` : transaction.fromAddress}
+                    </code>
+                    {isVisible && (
+                      <Button size="sm" variant="ghost" className="h-6 px-1"
+                        onClick={(e) => { e.stopPropagation(); handleCopyToClipboard(transaction.fromAddress!, 'Address'); }}>
+                        <Copy className="w-3 h-3" />
+                      </Button>
+                    )}
+                  </div>
+                )}
+                {transaction.toAddress && (
+                  <div className="flex items-center gap-1">
+                    <span className="text-foreground/70">To:</span>
+                    <code className="bg-muted/40 px-1.5 py-0.5 rounded font-mono">
+                      {transaction.toAddress.length > 20 ? `${transaction.toAddress.slice(0, 10)}...${transaction.toAddress.slice(-8)}` : transaction.toAddress}
+                    </code>
+                    {isVisible && (
+                      <Button size="sm" variant="ghost" className="h-6 px-1"
+                        onClick={(e) => { e.stopPropagation(); handleCopyToClipboard(transaction.toAddress!, 'Address'); }}>
+                        <Copy className="w-3 h-3" />
+                      </Button>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Fee */}
             {transaction.feeAmount && !compact && (
               <div className="text-xs text-muted-foreground">
@@ -525,11 +559,26 @@ export default function TransactionListItem({
                       </>
                     )}
                   </div>
-                  {transaction.confirmations !== undefined && (
-                    <div className="text-xs text-muted-foreground">
-                      {transaction.confirmations} confirmations
-                    </div>
-                  )}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-muted-foreground">
+                    {transaction.confirmations !== undefined && (
+                      <div>Confirmations: <span className="text-foreground">{transaction.confirmations}</span></div>
+                    )}
+                    {transaction.blockNumber !== undefined && (
+                      <div>Block: <span className="text-foreground">{transaction.blockNumber}</span></div>
+                    )}
+                    {transaction.gasUsed !== undefined && (
+                      <div>Gas Used: <span className="text-foreground">{transaction.gasUsed}</span></div>
+                    )}
+                    {transaction.gasPriceGwei !== undefined && (
+                      <div>Gas Price: <span className="text-foreground">{transaction.gasPriceGwei} Gwei</span></div>
+                    )}
+                    {transaction.nonce !== undefined && (
+                      <div>Nonce: <span className="text-foreground">{transaction.nonce}</span></div>
+                    )}
+                    {transaction.txIndex !== undefined && (
+                      <div>Tx Index: <span className="text-foreground">{transaction.txIndex}</span></div>
+                    )}
+                  </div>
                 </div>
               )}
 

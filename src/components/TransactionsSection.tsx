@@ -8,6 +8,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import CollapsibleSection from './CollapsibleSection';
 import TransactionsList from './TransactionsList';
+import ImportedAddressesTransactions from './ImportedAddressesTransactions';
 import MissingTransactionsWidget from './MissingTransactionsWidget';
 import { generateMockTransactions } from '../utils/mockTransactions';
 
@@ -101,6 +102,16 @@ export default function TransactionsSection() {
           showDetails={true}
           groupByMonth={true}
         />
+      </CollapsibleSection>
+
+      {/* Imported Addresses Transactions */}
+      <CollapsibleSection
+        key={`addresses-${collapseKey}`}
+        title="Transacciones de Addresses Importadas"
+        description="Todas las transacciones on-chain vinculadas a tus direcciones importadas"
+        defaultOpen={!allCollapsed}
+      >
+        <ImportedAddressesTransactions />
       </CollapsibleSection>
     </div>
   );
