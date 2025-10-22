@@ -33,7 +33,7 @@ import { Button } from './ui/button';
 import InfoTooltip from './shared/InfoTooltip';
 import { CryptoIcon } from './CryptoIcon';
 import { type Transaction } from '../types';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 import { copyToClipboard } from '../utils/clipboard';
 
 interface TransactionListItemProps {

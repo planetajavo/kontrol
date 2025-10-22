@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { CryptoIcon } from './CryptoIcon';
 import InfoTooltip from './shared/InfoTooltip';
 import { Badge } from './ui/badge';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 import { copyToClipboard } from '../utils/clipboard';
 
 interface AddressData {

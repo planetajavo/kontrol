@@ -21,7 +21,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Input } from './ui/input';
 import { Card } from './ui/card';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 import { copyToClipboard } from '../utils/clipboard';
 import CryptoIcon from './CryptoIcon';
 import ExchangeIcon from './ExchangeIcon';
