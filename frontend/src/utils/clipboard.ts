@@ -2,7 +2,7 @@
 // CLIPBOARD UTILITIES - Safe copy with fallback
 // ============================================================================
 
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 /**
  * Safely copy text to clipboard with fallback for when Clipboard API is blocked
