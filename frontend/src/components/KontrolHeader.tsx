@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GitHubHeader: React.FC = () => {
+const KontrolHeader: React.FC = () => {
   return (
     <header className="github-header">
       <div className="github-header-content">
@@ -96,4 +96,4 @@ const GitHubHeader: React.FC = () => {
   );
 };
 
-export default GitHubHeader;
+export default KontrolHeader;
