@@ -4,8 +4,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:fast": "vite --host --open --force",
+    "dev:debug": "vite --debug --host --open",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build:watch": "vite build --watch",
+    "preview": "vite preview --host --open",
+    "clean": "rm -rf node_modules/.vite dist",
+    "fresh": "npm run clean && npm install && npm run dev:fast",
+    "restart": "pkill -f vite && npm run dev:fast"
   },
   "dependencies": {
     "react": "^18.3.1",
