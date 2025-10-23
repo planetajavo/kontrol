@@ -35,7 +35,7 @@ export const Button = ({
   
   const variantClasses = {
     primary: 'bg-accent-emphasis hover:bg-accent-muted text-fg-onEmphasis focus:ring-accent-emphasis',
-    secondary: 'bg-neutral-subtle hover:bg-neutral-muted text-fg-default border border-border-default focus:ring-accent-emphasis',
+    secondary: 'bg-gray-700 hover:bg-gray-600 text-gray-100 border border-gray-600 focus:ring-blue-500',
     danger: 'bg-danger-emphasis hover:bg-danger-muted text-fg-onEmphasis focus:ring-danger-emphasis',
     ghost: 'hover:bg-neutral-subtle text-fg-default focus:ring-accent-emphasis',
   };

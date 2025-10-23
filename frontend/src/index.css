@@ -4,11 +4,11 @@
 
 @layer base {
   * {
-    @apply border-border-default;
+    @apply border-gray-300;
   }
   
   body {
-    @apply bg-canvas-default text-fg-default font-sans antialiased;
+    @apply bg-gray-900 text-gray-100 font-sans antialiased;
     @apply min-h-screen;
   }
   
@@ -18,59 +18,55 @@
 }
 
 @layer components {
-  /* Design System Custom Classes */
+  /* GitHub-style components */
   
-  /* Button variants */
   .btn-primary {
-    @apply bg-accent-emphasis hover:bg-accent-muted text-fg-onEmphasis;
-    @apply px-sm py-2xs rounded-md font-medium;
+    @apply bg-blue-600 hover:bg-blue-700 text-white;
+    @apply px-4 py-2 rounded-md font-medium;
     @apply transition-colors duration-200;
-    @apply focus:outline-none focus:ring-2 focus:ring-accent-emphasis focus:ring-offset-2;
-    @apply focus:ring-offset-canvas-default;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply focus:ring-offset-gray-900;
   }
   
   .btn-secondary {
-    @apply bg-neutral-subtle hover:bg-neutral-muted text-fg-default;
-    @apply px-sm py-2xs rounded-md font-medium;
-    @apply border border-border-default;
+    @apply bg-gray-700 hover:bg-gray-600 text-gray-100;
+    @apply px-4 py-2 rounded-md font-medium;
+    @apply border border-gray-600;
     @apply transition-colors duration-200;
   }
   
   .btn-danger {
-    @apply bg-danger-emphasis hover:bg-danger-muted text-fg-onEmphasis;
-    @apply px-sm py-2xs rounded-md font-medium;
+    @apply bg-red-600 hover:bg-red-700 text-white;
+    @apply px-4 py-2 rounded-md font-medium;
     @apply transition-colors duration-200;
   }
   
-  /* Input styles */
   .input {
-    @apply bg-canvas-inset border border-border-default rounded-md;
-    @apply px-sm py-2xs text-fg-default;
-    @apply focus:outline-none focus:border-accent-emphasis;
-    @apply placeholder:text-fg-subtle;
+    @apply bg-gray-800 border border-gray-600 rounded-md;
+    @apply px-3 py-2 text-gray-100;
+    @apply focus:outline-none focus:border-blue-500;
+    @apply placeholder:text-gray-400;
   }
   
-  /* Card styles */
   .card {
-    @apply bg-canvas-subtle border border-border-default rounded-lg;
-    @apply shadow-md;
+    @apply bg-gray-800 border border-gray-700 rounded-lg;
+    @apply shadow-lg;
   }
   
-  /* Badge styles */
   .badge {
-    @apply inline-flex items-center px-2xs py-4xs rounded-md text-xs font-medium;
+    @apply inline-flex items-center px-2 py-1 rounded-md text-xs font-medium;
   }
   
   .badge-success {
-    @apply badge bg-success-subtle text-fg-onEmphasis;
+    @apply badge bg-green-900 text-green-100;
   }
   
   .badge-danger {
-    @apply badge bg-danger-subtle text-fg-onEmphasis;
+    @apply badge bg-red-900 text-red-100;
   }
   
   .badge-accent {
-    @apply badge bg-accent-subtle text-fg-onEmphasis;
+    @apply badge bg-blue-900 text-blue-100;
   }
 }
 
@@ -82,14 +78,14 @@
   }
   
   .scrollbar-thin::-webkit-scrollbar-track {
-    @apply bg-canvas-default;
+    @apply bg-gray-900;
   }
   
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-neutral-muted rounded-md;
+    @apply bg-gray-600 rounded-md;
   }
   
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-emphasis;
+    @apply bg-gray-500;
   }
 }

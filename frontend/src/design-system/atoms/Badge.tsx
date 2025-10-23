@@ -29,7 +29,7 @@ export const Badge = ({
     success: 'bg-success-subtle text-fg-onEmphasis',
     danger: 'bg-danger-subtle text-fg-onEmphasis',
     accent: 'bg-accent-subtle text-fg-onEmphasis',
-    neutral: 'bg-neutral-subtle text-fg-default border border-border-default',
+    neutral: 'bg-gray-700 text-gray-100 border border-gray-600',
     attention: 'bg-attention-subtle text-fg-onEmphasis',
   };
   

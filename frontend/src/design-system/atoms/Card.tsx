@@ -20,7 +20,7 @@ export const Card = ({ children, className = '', hover = false }: CardProps) => 
   return (
     <div
       className={`
-        bg-canvas-subtle border border-border-default rounded-lg shadow-md
+        bg-gray-800 border border-gray-700 rounded-lg shadow-md
         ${hover ? 'hover:border-accent-emphasis transition-colors duration-200 cursor-pointer' : ''}
         ${className}
       `.trim().replace(/\s+/g, ' ')}

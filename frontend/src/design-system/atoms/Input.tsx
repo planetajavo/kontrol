@@ -33,7 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             placeholder:text-fg-subtle
             focus:outline-none focus:ring-2 focus:ring-accent-emphasis
             transition-colors duration-200
-            ${error ? 'border-danger-emphasis' : 'border-border-default'}
+            ${error ? 'border-red-500' : 'border-gray-600'}
             ${className}
           `.trim().replace(/\s+/g, ' ')}
           {...props}

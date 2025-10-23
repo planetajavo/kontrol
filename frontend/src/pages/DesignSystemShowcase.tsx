@@ -170,15 +170,15 @@ export default function DesignSystemShowcase() {
                 <h3 className="text-lg font-semibold text-fg-default mb-sm">Canvas</h3>
                 <div className="space-y-2xs">
                   <div className="flex items-center gap-2xs">
-                    <div className="w-8 h-8 rounded bg-canvas-default border border-border-default"></div>
+                    <div className="w-8 h-8 rounded bg-gray-800 border border-gray-600"></div>
                     <span className="text-sm text-fg-muted">default</span>
                   </div>
                   <div className="flex items-center gap-2xs">
-                    <div className="w-8 h-8 rounded bg-canvas-subtle border border-border-default"></div>
+                    <div className="w-8 h-8 rounded bg-gray-700 border border-gray-600"></div>
                     <span className="text-sm text-fg-muted">subtle</span>
                   </div>
                   <div className="flex items-center gap-2xs">
-                    <div className="w-8 h-8 rounded bg-canvas-inset border border-border-default"></div>
+                    <div className="w-8 h-8 rounded bg-gray-900 border border-gray-600"></div>
                     <span className="text-sm text-fg-muted">inset</span>
                   </div>
                 </div>
