@@ -63,59 +63,57 @@ const GitHubSidebar: React.FC = () => {
           </a>
         </div>
 
-        {/* Code */}
+        {/* Tax */}
         <div className="github-sidebar-section">
-          <div className="github-sidebar-title">Code</div>
-          <a href="#code" className="github-sidebar-item">
+          <div className="github-sidebar-title">TAX</div>
+          <a href="#tax-pnl" className="github-sidebar-item">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"/>
+              <path fillRule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 000 1.5h12.5a.75.75 0 000-1.5H1.75z"/>
             </svg>
-            Code
+            P&L
+            <span className="github-sidebar-count">$45,230</span>
           </a>
-          <a href="#issues" className="github-sidebar-item">
+          <a href="#tax-optimizer" className="github-sidebar-item">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/>
-              <path fillRule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"/>
+              <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1a7 7 0 110 14A7 7 0 018 1z"/>
+              <path d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3A.5.5 0 018 4z"/>
             </svg>
-            Issues
-            <span className="github-sidebar-count">12</span>
+            Tax Optimizer
+            <span className="github-sidebar-count">Active</span>
           </a>
-          <a href="#pull-requests" className="github-sidebar-item">
+        </div>
+
+        {/* Compliance */}
+        <div className="github-sidebar-section">
+          <div className="github-sidebar-title">COMPLIANCE</div>
+          <a href="#compliance-personal-info" className="github-sidebar-item">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path d="M1.5 3.25a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zm5.677-.177L9.573.677A.25.25 0 0110 .854V2.5h3A2.5 2.5 0 0115.5 5v6.628a2.251 2.251 0 11-1.5 0V5a1 1 0 00-1-1h-3v1.646a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 00-.75.75v11.5a.75.75 0 001.5 0V14h8.5a1 1 0 001-1v-2.628a2.251 2.251 0 111.5 0V13a2.5 2.5 0 01-2.5 2.5H2.25A2.25 2.25 0 010 13.25v-11.5a.75.75 0 00.75-.75zm11.5 12a.75.75 0 100-1.5.75.75 0 000 1.5zm0-3a.75.75 0 100-1.5.75.75 0 000 1.5z"/>
+              <path d="M8 8a3 3 0 100-6 3 3 0 000 6zm2-3a2 2 0 11-4 0 2 2 0 014 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
             </svg>
-            Pull requests
+            Personal Info & KYC
+            <span className="github-sidebar-count">✓</span>
+          </a>
+          <a href="#compliance-identity-docs" className="github-sidebar-item">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+              <path fillRule="evenodd" d="M4 0h5.293A1 1 0 0110 1.707L14.293 6A1 1 0 0115 7.414V14a2 2 0 01-2 2H3a2 2 0 01-2-2V2a2 2 0 012-2zm5.5 6.5V2.5L13.5 6.5H9.5z"/>
+            </svg>
+            Identity Documents
             <span className="github-sidebar-count">3</span>
           </a>
-          <a href="#actions" className="github-sidebar-item">
+          <a href="#compliance-origin-funds" className="github-sidebar-item">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM6.379 5.227A.25.25 0 006 5.442v5.117a.25.25 0 00.379.214l4.264-2.559a.25.25 0 000-.428L6.379 5.227zM7.5 6.432v3.136L9.864 8 7.5 6.432z"/>
+              <path fillRule="evenodd" d="M1 1.5A.5.5 0 011.5 1H3a.5.5 0 01.5.5v2a.5.5 0 01-.5.5H1.5a.5.5 0 01-.5-.5v-2zM2 2v1h1V2H2zm0 3.5A.5.5 0 011.5 5H3a.5.5 0 01.5-.5v-2a.5.5 0 01-.5-.5H1.5a.5.5 0 01-.5.5v2zM2 4v1h1V4H2z"/>
             </svg>
-            Actions
+            Origin of Funds
+            <span className="github-sidebar-count">Pending</span>
           </a>
-          <a href="#projects" className="github-sidebar-item">
+          <a href="#compliance-regulations" className="github-sidebar-item">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v3.585a.746.746 0 01-.128.416l-1.5 2.25a.746.746 0 01-.622.334H1.75a.75.75 0 01-.75-.75V1.75zm1.75-.25a.25.25 0 00-.25.25v2.5h12.5v-2.5a.25.25 0 00-.25-.25H1.75zM14.25 6H1.75a.75.75 0 00-.75.75v6.5c0 .414.336.75.75.75h12.5a.75.75 0 00.75-.75v-6.5a.75.75 0 00-.75-.75zM2.5 7.25a.25.25 0 01.25-.25h10.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25H2.75a.25.25 0 01-.25-.25v-5.5z"/>
+              <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1a7 7 0 110 14A7 7 0 018 1z"/>
+              <path d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3A.5.5 0 018 4z"/>
             </svg>
-            Projects
-          </a>
-          <a href="#wiki" className="github-sidebar-item">
-            <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V1.75zm1.75-.25a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25H1.75z"/>
-            </svg>
-            Wiki
-          </a>
-          <a href="#security" className="github-sidebar-item">
-            <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M7.467.133a1.75 1.75 0 011.066 0l5.25 1.68A1.75 1.75 0 0115 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.7 1.7 0 01-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 011.217-1.667L7.467.133zm.61 1.429a.25.25 0 00-.154 0L1.95 3.18a.25.25 0 00-.174.238v3.582c0 1.358.275 2.666 1.057 3.858.784 1.194 2.121 2.34 4.366 3.297a.2.2 0 00.154 0c2.245-.956 3.582-2.104 4.366-3.298.782-1.192 1.057-2.5 1.057-3.858V3.418a.25.25 0 00-.174-.238L8.078 1.562zM9.75 6.5a.75.75 0 00-1.5 0v3.379l1.28-1.28a.75.75 0 00-1.06-1.06l-2.5 2.5a.75.75 0 000 1.06l2.5 2.5a.75.75 0 001.06-1.06L8.25 10.379V6.5z"/>
-            </svg>
-            Security
-          </a>
-          <a href="#insights" className="github-sidebar-item">
-            <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM6.379 5.227A.25.25 0 006 5.442v5.117a.25.25 0 00.379.214l4.264-2.559a.25.25 0 000-.428L6.379 5.227zM7.5 6.432v3.136L9.864 8 7.5 6.432z"/>
-            </svg>
-            Insights
+            Applicable Regulations
+            <span className="github-sidebar-count">5</span>
           </a>
         </div>
 

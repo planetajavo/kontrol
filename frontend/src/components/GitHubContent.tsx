@@ -5,7 +5,7 @@ const GitHubContent: React.FC = () => {
     <main className="github-content">
       {/* Header */}
       <div className="github-content-header">
-        <h1 className="github-content-title">Dashboard 📊</h1>
+        <h1 className="github-content-title">Dashboard 📊✨</h1>
         <p className="github-content-subtitle">Crypto Portfolio Management & Tax Compliance Platform</p>
         
         {/* Stats */}
@@ -104,6 +104,57 @@ const GitHubContent: React.FC = () => {
                   <div className="transaction-time">1 day ago</div>
                 </div>
                 <div className="transaction-amount neutral">1,000 USDC</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Exit Planner Card */}
+        <div className="github-card">
+          <div className="github-card-header">
+            <h2 className="github-card-title">Exit Planner</h2>
+            <a href="#configure" className="github-btn">Configure</a>
+          </div>
+          <div className="github-card-content">
+            <div className="exit-planner-content">
+              <div className="exit-planner-stats">
+                <div className="exit-stat">
+                  <div className="exit-stat-value">$2.1M</div>
+                  <div className="exit-stat-label">Target Exit Value</div>
+                </div>
+                <div className="exit-stat">
+                  <div className="exit-stat-value">18</div>
+                  <div className="exit-stat-label">Months to Target</div>
+                </div>
+                <div className="exit-stat">
+                  <div className="exit-stat-value">67%</div>
+                  <div className="exit-stat-label">Progress</div>
+                </div>
+              </div>
+              
+              <div className="exit-planner-strategy">
+                <h4>Exit Strategy</h4>
+                <div className="strategy-item">
+                  <div className="strategy-icon">📊</div>
+                  <div className="strategy-details">
+                    <div className="strategy-name">DCA Out Strategy</div>
+                    <div className="strategy-description">Gradual sell-off over 12 months</div>
+                  </div>
+                  <div className="strategy-status active">Active</div>
+                </div>
+                <div className="strategy-item">
+                  <div className="strategy-icon">🎯</div>
+                  <div className="strategy-details">
+                    <div className="strategy-name">Price Targets</div>
+                    <div className="strategy-description">BTC: $120K, ETH: $8K</div>
+                  </div>
+                  <div className="strategy-status pending">Pending</div>
+                </div>
+              </div>
+
+              <div className="exit-planner-actions">
+                <button className="github-btn-primary">Update Strategy</button>
+                <button className="github-btn-secondary">View Details</button>
               </div>
             </div>
           </div>

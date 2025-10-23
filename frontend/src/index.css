@@ -3,9 +3,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
+  }
+  
+  body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
   background-color: #0d1117;
   color: #e6edf3;
@@ -552,6 +552,146 @@ body {
   color: #7d8590;
 }
 
+/* Exit Planner */
+.exit-planner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.exit-planner-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.exit-stat {
+  text-align: center;
+  padding: 16px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+}
+
+.exit-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin-bottom: 4px;
+}
+
+.exit-stat-label {
+  font-size: 11px;
+  color: #7d8590;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exit-planner-strategy h4 {
+  color: #e6edf3;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.strategy-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.strategy-icon {
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #161b22;
+  border-radius: 50%;
+}
+
+.strategy-details {
+  flex: 1;
+}
+
+.strategy-name {
+  font-weight: 600;
+  color: #e6edf3;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.strategy-description {
+  font-size: 12px;
+  color: #7d8590;
+}
+
+.strategy-status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.strategy-status.active {
+  background-color: #3fb950;
+  color: #0d1117;
+}
+
+.strategy-status.pending {
+  background-color: #f85149;
+  color: #ffffff;
+}
+
+.exit-planner-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.github-btn-primary {
+  background-color: #238636;
+  color: #ffffff;
+  border: 1px solid #238636;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.github-btn-primary:hover {
+  background-color: #2ea043;
+  border-color: #2ea043;
+}
+
+.github-btn-secondary {
+  background-color: transparent;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.github-btn-secondary:hover {
+  background-color: #21262d;
+  border-color: #7d8590;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .github-sidebar {
@@ -570,6 +710,14 @@ body {
   
   .portfolio-stats {
     grid-template-columns: 1fr;
+  }
+  
+  .exit-planner-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .exit-planner-actions {
+    flex-direction: column;
   }
   
   .github-dropdown-menu {
