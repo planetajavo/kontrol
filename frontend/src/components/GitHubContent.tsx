@@ -5,8 +5,8 @@ const GitHubContent: React.FC = () => {
     <main className="github-content">
       {/* Header */}
       <div className="github-content-header">
-        <h1 className="github-content-title">KONTROL 🚀 FUNCIONANDO!</h1>
-        <p className="github-content-subtitle">Portfolio Management Platform for Crypto-Fiscal Compliance</p>
+        <h1 className="github-content-title">Dashboard 📊</h1>
+        <p className="github-content-subtitle">Crypto Portfolio Management & Tax Compliance Platform</p>
         
         {/* Stats */}
         <div className="github-stats">
@@ -33,61 +33,79 @@ const GitHubContent: React.FC = () => {
 
       {/* Tabs */}
       <div className="github-tabs">
-        <a href="#code" className="github-tab active">Code</a>
-        <a href="#issues" className="github-tab">Issues</a>
-        <a href="#pull-requests" className="github-tab">Pull requests</a>
-        <a href="#actions" className="github-tab">Actions</a>
-        <a href="#projects" className="github-tab">Projects</a>
-        <a href="#wiki" className="github-tab">Wiki</a>
-        <a href="#security" className="github-tab">Security</a>
-        <a href="#insights" className="github-tab">Insights</a>
+        <a href="#overview" className="github-tab active">Overview</a>
+        <a href="#transactions" className="github-tab">Transactions</a>
+        <a href="#portfolio" className="github-tab">Portfolio</a>
+        <a href="#analytics" className="github-tab">Analytics</a>
+        <a href="#reports" className="github-tab">Reports</a>
+        <a href="#settings" className="github-tab">Settings</a>
       </div>
 
       {/* Main Content */}
       <div className="github-main-content">
-        {/* README Card */}
+        {/* Portfolio Summary Card */}
         <div className="github-card">
           <div className="github-card-header">
-            <h2 className="github-card-title">README.md</h2>
-            <div className="github-card-meta">Last updated 2 hours ago</div>
+            <h2 className="github-card-title">Portfolio Summary</h2>
+            <div className="github-card-meta">Updated 2 minutes ago</div>
           </div>
           <div className="github-card-content">
-            <h3>🎯 KONTROL - Portfolio Management Platform</h3>
-            <p>
-              A comprehensive crypto-fiscal compliance platform designed to help users manage their cryptocurrency portfolios 
-              with full tax compliance and regulatory adherence.
-            </p>
-            
-            <h4>✨ Features</h4>
-            <ul>
-              <li>📊 <strong>Portfolio Tracking</strong> - Real-time portfolio monitoring across multiple exchanges</li>
-              <li>💰 <strong>Tax Compliance</strong> - Automated tax calculations and reporting</li>
-              <li>🔍 <strong>Transaction Analysis</strong> - Detailed transaction history and analytics</li>
-              <li>🛡️ <strong>Security First</strong> - Bank-level security for all operations</li>
-              <li>📈 <strong>Performance Metrics</strong> - Advanced performance tracking and reporting</li>
-            </ul>
-
-            <h4>🚀 Quick Start</h4>
-            <div className="github-code">
-              <pre>{`# Clone the repository
-git clone https://github.com/planetajavo/kontrol.git
-
-# Install dependencies
-cd kontrol/frontend
-npm install
-
-# Start development server
-npm run dev
-
-# Open http://localhost:3000`}</pre>
+            <div className="portfolio-stats">
+              <div className="stat-item">
+                <div className="stat-value">$125,430.50</div>
+                <div className="stat-label">Total Value</div>
+                <div className="stat-change positive">+12.5%</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">$8,250.30</div>
+                <div className="stat-label">24h Change</div>
+                <div className="stat-change positive">+6.8%</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">23</div>
+                <div className="stat-label">Assets</div>
+                <div className="stat-change neutral">+2</div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <h4>📋 Requirements</h4>
-            <ul>
-              <li>Node.js 18+</li>
-              <li>npm or yarn</li>
-              <li>Modern web browser</li>
-            </ul>
+        {/* Recent Transactions Card */}
+        <div className="github-card">
+          <div className="github-card-header">
+            <h2 className="github-card-title">Recent Transactions</h2>
+            <a href="#view-all" className="github-btn">View All</a>
+          </div>
+          <div className="github-card-content">
+            <div className="transaction-list">
+              <div className="transaction-item">
+                <div className="transaction-icon">📈</div>
+                <div className="transaction-details">
+                  <div className="transaction-type">Buy</div>
+                  <div className="transaction-asset">Bitcoin (BTC)</div>
+                  <div className="transaction-time">2 hours ago</div>
+                </div>
+                <div className="transaction-amount positive">+0.5 BTC</div>
+              </div>
+              <div className="transaction-item">
+                <div className="transaction-icon">📉</div>
+                <div className="transaction-details">
+                  <div className="transaction-type">Sell</div>
+                  <div className="transaction-asset">Ethereum (ETH)</div>
+                  <div className="transaction-time">5 hours ago</div>
+                </div>
+                <div className="transaction-amount negative">-2.1 ETH</div>
+              </div>
+              <div className="transaction-item">
+                <div className="transaction-icon">🔄</div>
+                <div className="transaction-details">
+                  <div className="transaction-type">Swap</div>
+                  <div className="transaction-asset">USDC → USDT</div>
+                  <div className="transaction-time">1 day ago</div>
+                </div>
+                <div className="transaction-amount neutral">1,000 USDC</div>
+              </div>
+            </div>
           </div>
         </div>
 

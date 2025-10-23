@@ -4,26 +4,62 @@ const GitHubSidebar: React.FC = () => {
   return (
     <aside className="github-sidebar">
       <div className="github-sidebar-content">
-        {/* Repository Info */}
+        {/* Main Navigation */}
         <div className="github-sidebar-section">
-          <div className="github-sidebar-title">Repository</div>
-          <a href="#overview" className="github-sidebar-item active">
+          <div className="github-sidebar-title">NAVIGATION</div>
+          <a href="#dashboard" className="github-sidebar-item active">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l5.45-4.072a.25.25 0 000-.4L5.4 8.2a.25.25 0 00-.4.2z"/>
+              <path fillRule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 010 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 000 1.5h12.5a.75.75 0 000-1.5H1.75z"/>
             </svg>
-            Overview
+            Dashboard
           </a>
-          <a href="#releases" className="github-sidebar-item">
+        </div>
+
+        {/* Transactions */}
+        <div className="github-sidebar-section">
+          <div className="github-sidebar-title">TRANSACTIONS</div>
+          <a href="#transactions-all" className="github-sidebar-item">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 010 1.5H8.5v4.25a.75.75 0 01-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z"/>
+              <path fillRule="evenodd" d="M1.5 1.5A.5.5 0 000 2v12a.5.5 0 00.5.5h13a.5.5 0 00.5-.5V2a.5.5 0 00-.5-.5h-13zM1 2a1 1 0 011-1h12a1 1 0 011 1v12a1 1 0 01-1 1H2a1 1 0 01-1-1V2zm7.5 3a.5.5 0 00-.5.5v6a.5.5 0 001 0V6.707l2.146 2.147a.5.5 0 00.708-.708L8.5 5.707V5.5a.5.5 0 00-.5-.5z"/>
             </svg>
-            Releases
+            All
+            <span className="github-sidebar-count">1,234</span>
           </a>
-          <a href="#packages" className="github-sidebar-item">
+          <a href="#transactions-missing" className="github-sidebar-item">
             <svg viewBox="0 0 16 16" width="16" height="16">
-              <path fillRule="evenodd" d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z"/>
+              <path fillRule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z"/>
+              <path d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3A.5.5 0 018 4z"/>
             </svg>
-            Packages
+            Missing
+            <span className="github-sidebar-count">23</span>
+          </a>
+        </div>
+
+        {/* Portfolio */}
+        <div className="github-sidebar-section">
+          <div className="github-sidebar-title">PORTFOLIO</div>
+          <a href="#portfolio-wallets" className="github-sidebar-item">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+              <path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm2-1a1 1 0 00-1 1v.217l7 4.2 7-4.2V4a1 1 0 00-1-1H2zm13 2.383l-4.708 2.825L15 11.105V5.383zm-7.027.854l-4.708-2.825L1 5.383v5.722l4.708-2.825L8 8.237z"/>
+            </svg>
+            Wallets
+            <span className="github-sidebar-count">5</span>
+          </a>
+          <a href="#portfolio-cex" className="github-sidebar-item">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+              <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1a7 7 0 110 14A7 7 0 018 1z"/>
+              <path d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3A.5.5 0 018 4z"/>
+            </svg>
+            CEX
+            <span className="github-sidebar-count">3</span>
+          </a>
+          <a href="#portfolio-defi" className="github-sidebar-item">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+              <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1a7 7 0 110 14A7 7 0 018 1z"/>
+              <path d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3A.5.5 0 018 4z"/>
+            </svg>
+            DeFi
+            <span className="github-sidebar-count">12</span>
           </a>
         </div>
 
