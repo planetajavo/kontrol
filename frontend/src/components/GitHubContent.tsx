@@ -5,7 +5,7 @@ const GitHubContent: React.FC = () => {
     <main className="github-content">
       {/* Header */}
       <div className="github-content-header">
-        <h1 className="github-content-title">KONTROL</h1>
+        <h1 className="github-content-title">KONTROL 🚀</h1>
         <p className="github-content-subtitle">Portfolio Management Platform for Crypto-Fiscal Compliance</p>
         
         {/* Stats */}
